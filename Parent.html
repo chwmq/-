@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Page</title>
+</head>
+<body>
+    <h1>Parent Page</h1>
+    <iframe id="myIframe" src="iframe.html" style="width: 100%; height: 300px;"></iframe>
+    <button id="sendMessageButton">Send Message to Iframe</button>
+
+    <script>
+        // 获取 iframe 元素
+        const iframe = document.getElementById('myIframe');
+
+        // 获取按钮元素
+        const sendMessageButton = document.getElementById('sendMessageButton');
+
+        // 点击按钮时向 iframe 发送消息
+        sendMessageButton.addEventListener('click', () => {
+            const message = 'Hello from parent!';
+            // 使用 postMessage 向 iframe 发送消息
+            iframe.contentWindow.postMessage(message, '*'); // '*' 表示允许任何目标窗口接收消息
+        });
+    </script>
+</body>
+</html>

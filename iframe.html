@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Page</title>
+</head>
+<body>
+    <h2>Iframe Page</h2>
+    <p id="messageDisplay">Waiting for message...</p>
+
+    <script>
+        // 监听 message 事件
+        window.addEventListener('message', (event) => {
+            // 检查消息来源是否可信（可选，但建议添加）
+            if (event.origin !== 'Parent.html') { // 替换为父页面的域名
+                return;
+            }
+
+            // 获取消息内容
+            const message = event.data;
+            // 显示消息
+            document.getElementById('messageDisplay').textContent = `Received message: ${message}`;
+        });
+    </script>
+</body>
+</html>
